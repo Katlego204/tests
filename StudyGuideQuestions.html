@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math 144: Complete Exam Prep</title>
+    <style>
+        :root {
+            --bg: #0f172a;
+            --surface: #1e293b;
+            --surface-hover: #273549;
+            --border: #334155;
+            --primary: #38bdf8;
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+            --accent: #f43f5e;
+            --tag-a: #0369a1;
+            --tag-b: #4f46e5;
+            --tag-c: #7e22ce;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            padding: 40px 20px;
+            line-height: 1.6;
+        }
+
+        .container { max-width: 900px; margin: 0 auto; }
+
+        header {
+            margin-bottom: 40px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 20px;
+        }
+
+        header h1 { font-size: 2rem; color: var(--primary); margin-bottom: 8px; }
+        header p { color: var(--text-muted); font-size: 0.95rem; }
+
+        .section-group { margin-bottom: 45px; }
+
+        .section-title {
+            font-size: 1.3rem;
+            color: var(--text-main);
+            margin-bottom: 18px;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 10px;
+        }
+
+        .section-badge {
+            color: white;
+            padding: 2px 10px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .badge-a { background-color: var(--tag-a); }
+        .badge-b { background-color: var(--tag-b); }
+        .badge-c { background-color: var(--tag-c); }
+
+        .card {
+            background: var(--surface);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 22px;
+            margin-bottom: 16px;
+            transition: border-color 0.2s, transform 0.2s;
+        }
+        .card:hover { border-color: var(--primary); transform: translateY(-2px); }
+
+        .problem-meta { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .problem-id { font-weight: 700; font-size: 0.9rem; color: var(--primary); }
+
+        .math-block {
+            margin: 14px 0;
+            padding: 12px;
+            background: rgba(15, 23, 42, 0.6);
+            border-left: 3px solid var(--primary);
+            border-radius: 6px;
+            overflow-x: auto;
+        }
+
+        .sub-questions { list-style: none; margin-top: 10px; }
+        .sub-questions li { margin-bottom: 8px; padding-left: 15px; border-left: 2px solid var(--border); }
+
+        .note-tag {
+            font-size: 0.75rem;
+            color: var(--accent);
+            background: rgba(244, 63, 94, 0.1);
+            padding: 3px 8px;
+            border-radius: 4px;
+            display: inline-block;
+            margin-top: 8px;
+        }
+
+        button.toggle-btn {
+            background: transparent;
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 6px 14px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            margin-top: 14px;
+            transition: all 0.2s;
+        }
+        button.toggle-btn:hover { background: var(--surface-hover); color: var(--text-main); border-color: var(--primary); }
+
+        .hidden-content {
+            display: none;
+            margin-top: 14px;
+            padding: 14px;
+            background: rgba(2, 132, 199, 0.1);
+            border-left: 3px solid var(--primary);
+            border-radius: 4px;
+            font-size: 0.9rem;
+            color: #e2e8f0;
+        }
+
+        /* Section B & C specific elements */
+        .alert-box, .instruction-box {
+            padding: 15px 20px;
+            margin-bottom: 30px;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+        .alert-box { background: rgba(244, 63, 94, 0.15); border-left: 4px solid var(--accent); color: #fda4af; }
+        .instruction-box { background: rgba(126, 34, 206, 0.15); border-left: 4px solid var(--tag-c); color: #d8b4fe; }
+
+        .answer-box {
+            border: 1px dashed var(--border);
+            border-radius: 6px;
+            background: rgba(15, 23, 42, 0.5);
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            width: 100%;
+        }
+        .box-sm { height: 60px; }
+        .box-md { height: 100px; }
+    </style>
+
+    <script>
+        MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\\(', '\\)']],
+                displayMath: [['$$', '$$'], ['\\[', '\\]']]
+            }
+        };
+
+        function toggleContent(id) {
+            const el = document.getElementById(id);
+            el.style.display = (el.style.display === "block") ? "none" : "block";
+        }
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>Math 144 Exam Prep: Complete Edition</h1>
+        <p>Targeted Problems: Sections A, B, and C consolidated[cite: 1, 2, 3, 4]</p>
+    </header>
+
+    <!-- SECTION A (1-5) -->
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 1: Exponential Functions and Modelling
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.1</span></div>
+            <p>A bacteria culture grows with a constant relative growth rate. The bacteria count was 400 after 2 hours and 25,600 after 6 hours.[cite: 2]</p>
+            <ul class="sub-questions">
+                <li>(a) What was the initial size of the culture?[cite: 2]</li>
+                <li>(b) Find an expression for the number of bacteria after \(t\) hours.[cite: 2]</li>
+                <li>(c) When will the population reach 50,000?[cite: 2]</li>
+            </ul>
+            <button class="toggle-btn" onclick="toggleContent('h1_1')">Show Guide / Hint</button>
+            <div id="h1_1" class="hidden-content">Use $P(t) = P_0 e^{kt}$. From $t=2$ to $t=6$ is $\Delta t = 4$ hours. The factor increase is $\frac{25600}{400} = 64$. Thus $e^{4k} = 64 = 8^2 \implies e^{2k} = 8$. Then $P_0 = \frac{400}{e^{2k}} = \frac{400}{8} = 50$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.2</span></div>
+            <p>Evaluate the indefinite integral using exponential laws and substitution:[cite: 2]</p>
+            <div class="math-block">\[\int e^{e^u + u} \, du\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h1_2')">Show Guide / Hint</button>
+            <div id="h1_2" class="hidden-content">Rewrite $e^{e^u + u}$ as $e^{e^u} \cdot e^u$. Substitute $w = e^u$, which gives $dw = e^u du$. The integral becomes $\int e^w dw = e^w + C = e^{e^u} + C$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.3</span></div>
+            <p>Solve the differential equation involving separable exponential variables:[cite: 2]</p>
+            <div class="math-block">\[\frac{dy}{dx} = \frac{x^3}{e^y}\]</div>
+            <span class="note-tag">Note: This aligns with Question 8 on your 2026 exam breakdown[cite: 2]</span>
+            <button class="toggle-btn" onclick="toggleContent('h1_3')">Show Guide / Hint</button>
+            <div id="h1_3" class="hidden-content">Separate variables: $e^y dy = x^3 dx$. Integrate both sides: $e^y = \frac{x^4}{4} + C \implies y = \ln\left(\frac{x^4}{4} + C\right)$.[cite: 2]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 2: Hyperbolic Functions and Differentiation
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.1</span></div>
+            <p>Evaluate the exact value without a calculator:[cite: 2]</p>
+            <div class="math-block">\[\sinh(3 \ln 2)\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h2_1')">Show Guide / Hint</button>
+            <div id="h2_1" class="hidden-content">Use definition $\sinh(x) = \frac{e^x - e^{-x}}{2}$. Here $e^{3\ln 2} = e^{\ln(2^3)} = 8$, and $e^{-3\ln 2} = \frac{1}{8}$. So $\sinh(3\ln 2) = \frac{8 - 1/8}{2} = \frac{63}{16}$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.2</span></div>
+            <p>Let \(f(x) = \tanh(\ln x)\) for \(x > 0\). Calculate the derivative \(f'(x)\) and simplify your answer.[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h2_2')">Show Guide / Hint</button>
+            <div id="h2_2" class="hidden-content">Chain Rule: $f'(x) = \text{sech}^2(\ln x) \cdot \frac{1}{x}$. You can also write $\tanh(\ln x) = \frac{x - x^{-1}}{x + x^{-1}} = \frac{x^2 - 1}{x^2 + 1}$ and differentiate directly to get $\frac{4x}{(x^2 + 1)^2}$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.3</span></div>
+            <p>Given that \(\tanh x = \frac{12}{13}\), determine the exact values of \(\sinh x\) and \(\cosh x\).[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h2_3')">Show Guide / Hint</button>
+            <div id="h2_3" class="hidden-content">Identity: $1 - \tanh^2 x = \text{sech}^2 x$. So $\text{sech}^2 x = 1 - \frac{144}{169} = \frac{25}{169} \implies \cosh x = \frac{13}{5}$ (since $\cosh x > 0$). Then $\sinh x = \cosh x \cdot \tanh x = \frac{13}{5} \cdot \frac{12}{13} = \frac{12}{5}$.[cite: 2]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 3: Vectors and Equations of Lines
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.1</span></div>
+            <p>Determine the vector form of the line passing through the point \(P = (2, 1, 1)\) that runs parallel to the \(x\)-axis.[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h3_1')">Show Guide / Hint</button>
+            <div id="h3_1" class="hidden-content">Direction parallel to the x-axis is $\mathbf{d} = [1, 0, 0]$. Vector form: $\mathbf{r}(t) = [2, 1, 1] + t[1, 0, 0]$ for $t \in \mathbb{R}$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.2</span></div>
+            <p>Determine the parametric form of the line passing through the origin perpendicular to the plane \(x - 3y + 3z = 4\).[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h3_2')">Show Guide / Hint</button>
+            <div id="h3_2" class="hidden-content">The normal vector of the plane is $\mathbf{n} = [1, -3, 3]$, which serves as the direction vector of the perpendicular line. Passing through $(0,0,0)$, the parametric equations are $x = t$, $y = -3t$, $z = 3t$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.3</span></div>
+            <p>Find all values of \(k\) such that the vectors \(\mathbf{u} = [1, -1, 2]\) and \(\mathbf{v} = [k^2, k, -3]\) are orthogonal.[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h3_3')">Show Guide / Hint</button>
+            <div id="h3_3" class="hidden-content">Set dot product to zero: $\mathbf{u} \cdot \mathbf{v} = (1)(k^2) + (-1)(k) + (2)(-3) = k^2 - k - 6 = 0$. Factor: $(k - 3)(k + 2) = 0 \implies k = 3$ or $k = -2$.[cite: 2]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 4: Limits and Indeterminate Forms
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.1</span></div>
+            <p>Evaluate the indeterminate power limit (\(0^0\)) using logarithmic transformations and L'Hôpital's Rule:[cite: 2]</p>
+            <div class="math-block">\[\lim_{x \to 0^+} x^{\sqrt{x}}\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h4_1')">Show Guide / Hint</button>
+            <div id="h4_1" class="hidden-content">Let $y = x^{\sqrt{x}}$, so $\ln y = \sqrt{x} \ln x = \frac{\ln x}{x^{-1/2}}$. Apply L'Hôpital: $\lim_{x \to 0^+} \frac{1/x}{-\frac{1}{2}x^{-3/2}} = \lim_{x \to 0^+} (-2\sqrt{x}) = 0$. Therefore, $\lim y = e^0 = 1$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.2</span></div>
+            <p>Evaluate the indeterminate difference limit (\(\infty - \infty\)):[cite: 2]</p>
+            <div class="math-block">\[\lim_{x \to 1} \left( \frac{x}{x-1} - \frac{1}{\ln x} \right)\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h4_2')">Show Guide / Hint</button>
+            <div id="h4_2" class="hidden-content">Combine denominators: $\frac{x \ln x - (x - 1)}{(x - 1)\ln x}$. Apply L'Hôpital twice to resolve the $\frac{0}{0}$ indeterminate form. The resulting limit evaluates to $\frac{1}{2}$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.3</span></div>
+            <p>Consider the limit \(\lim_{x \to \infty} \frac{2x + \sin x}{3x}\).[cite: 2]</p>
+            <ul class="sub-questions">
+                <li>(a) Explain why L'Hôpital's Rule cannot be applied.[cite: 2]</li>
+                <li>(b) Evaluate the true limit using the Squeeze Theorem.[cite: 2]</li>
+            </ul>
+            <span class="note-tag">Note: Proof/explanation format typical of Section C rather than Section A[cite: 2]</span>
+            <button class="toggle-btn" onclick="toggleContent('h4_3')">Show Guide / Hint</button>
+            <div id="h4_3" class="hidden-content">(a) Differentiating top and bottom gives $\frac{2 + \cos x}{3}$. As $x \to \infty$, $\cos x$ oscillates continuously, meaning the derivative quotient limit does not exist. (b) Since $-1 \le \sin x \le 1$, we have $\frac{2x - 1}{3x} \le \frac{2x + \sin x}{3x} \le \frac{2x + 1}{3x}$. As $x \to \infty$, both bounds tend to $\frac{2}{3}$.[cite: 2]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 5: Planes, Normal Vectors and Distances
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.1</span></div>
+            <p>Determine the vector form, parametric form, and normal form of the plane passing through \(P = (6, -4, -3)\) with direction vectors \(\mathbf{u} = [1, 0, 2]\) and \(\mathbf{v} = [-3, 2, 1]\).[cite: 2]</p>
+            <span class="note-tag">Vector u patched[cite: 2]</span>
+            <button class="toggle-btn" onclick="toggleContent('h5_1')">Show Guide / Hint</button>
+            <div id="h5_1" class="hidden-content">Normal vector is $\mathbf{n} = \mathbf{u} \times \mathbf{v} = [-4, -7, 2]$. Normal equation: $-4(x - 6) - 7(y + 4) + 2(z + 3) = 0 \implies -4x - 7y + 2z = -2$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.2</span></div>
+            <p>Find the perpendicular distance between the point \(Q = (1, 2, 3)\) and the plane \(x - y + z = 0\), and determine the point on the plane closest to \(Q\).[cite: 2]</p>
+            <button class="toggle-btn" onclick="toggleContent('h5_2')">Show Guide / Hint</button>
+            <div id="h5_2" class="hidden-content">Distance: $D = \frac{|1(1) - 1(2) + 1(3)|}{\sqrt{1^2 + (-1)^2 + 1^2}} = \frac{2}{\sqrt{3}}$. The closest point is found by moving from $Q$ along the unit normal: $Q - D \frac{\mathbf{n}}{\|\mathbf{n}\|} = (1, 2, 3) - \frac{2}{3}(1, -1, 1) = \left(\frac{1}{3}, \frac{8}{3}, \frac{7}{3}\right)$.[cite: 2]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.3</span></div>
+            <p>Calculate the vector projection \(\text{proj}_{\mathbf{u}}(\mathbf{v})\) where \(\mathbf{u} = [2, -1, 3]\) and \(\mathbf{v} = [1, 4, -2]\).[cite: 2]</p>
+            <span class="note-tag">Vectors u and v patched[cite: 2]</span>
+            <button class="toggle-btn" onclick="toggleContent('h5_3')">Show Guide / Hint</button>
+            <div id="h5_3" class="hidden-content">Formula: $\text{proj}_{\mathbf{u}}(\mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|^2}\mathbf{u}$. Compute $\mathbf{u} \cdot \mathbf{v} = 2(1) + (-1)(4) + 3(-2) = -8$. Compute $\|\mathbf{u}\|^2 = 2^2 + (-1)^2 + 3^2 = 14$. Thus $\text{proj}_{\mathbf{u}}(\mathbf{v}) = -\frac{8}{14}[2, -1, 3] = -\frac{4}{7}[2, -1, 3]$.[cite: 2]</div>
+        </div>
+    </div>
+
+    <!-- SECTION A (6-10) -->
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 6: Integration of Algebraic and Radical Expressions
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 6.1</span></div>
+            <p>Evaluate the indefinite integral using a trigonometric substitution:[cite: 1]</p>
+            <div class="math-block">\[\int \frac{\sqrt{x^2 - 1}}{x^4} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h6_1')">Solve / Hint</button>
+            <div id="h6_1" class="hidden-content">Let $x = \sec\theta$, so $dx = \sec\theta\tan\theta \, d\theta$ and $\sqrt{x^2-1} = \tan\theta$. The integral becomes $\int \frac{\tan^2\theta}{\sec^3\theta} d\theta = \int \sin^2\theta \cos\theta \, d\theta$. Substitute $u = \sin\theta$, giving $\frac{1}{3}\sin^3\theta + C$. From the triangle, $\sin\theta = \frac{\sqrt{x^2-1}}{x}$, so the answer is $\frac{(\sqrt{x^2-1})^3}{3x^3} + C$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 6.2</span></div>
+            <p>Evaluate the indefinite integral:[cite: 1]</p>
+            <div class="math-block">\[\int \frac{1}{\sqrt{x^2 + 9}} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h6_2')">Solve / Hint</button>
+            <div id="h6_2" class="hidden-content">This is a standard form. Using $x = 3\tan\theta$, it simplifies to $\int \sec\theta \, d\theta = \ln|\sec\theta + \tan\theta| + C$. Converting back yields $\ln\left|\frac{\sqrt{x^2+9}}{3} + \frac{x}{3}\right| + C$, which simplifies to $\ln|x + \sqrt{x^2+9}| + C_1$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 6.3</span></div>
+            <p>Evaluate the definite integral using the trigonometric substitution \(5x = 3\sin\theta\):[cite: 1]</p>
+            <div class="math-block">\[\int_0^{3/5} \frac{x^2}{\sqrt{9 - 25x^2}} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h6_3')">Solve / Hint</button>
+            <div id="h6_3" class="hidden-content">Substitute $x = \frac{3}{5}\sin\theta$ and $dx = \frac{3}{5}\cos\theta \, d\theta$. The bounds change from $0 \to \frac{3}{5}$ to $0 \to \frac{\pi}{2}$. The denominator becomes $3\cos\theta$. The integral simplifies to $\frac{9}{125} \int_0^{\pi/2} \sin^2\theta \, d\theta = \frac{9}{125} [\frac{\theta}{2} - \frac{\sin 2\theta}{4}]_0^{\pi/2} = \frac{9\pi}{500}$.[cite: 1]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 7: Functions, Composition and Domains
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 7.1</span></div>
+            <p>Simplify the composite function \(f(x) = \cos(\sin^{-1} x)\) into an algebraic expression and state its exact domain \(D_f\) in interval notation.[cite: 1]</p>
+            <button class="toggle-btn" onclick="toggleContent('h7_1')">Solve / Hint</button>
+            <div id="h7_1" class="hidden-content">Let $\theta = \sin^{-1} x$. By definition, this means $\sin\theta = x$ and $\theta \in [-\frac{\pi}{2}, \frac{\pi}{2}]$. Using a right triangle or the identity $\cos^2\theta = 1 - \sin^2\theta$, we get $\cos\theta = \sqrt{1-x^2}$ (positive root because cosine is positive on that interval). Domain: $[-1, 1]$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 7.2</span></div>
+            <p>State the exact domain of the hyperbolic tangent function \(g(x) = \tanh x\).[cite: 1]</p>
+            <button class="toggle-btn" onclick="toggleContent('h7_2')">Solve / Hint</button>
+            <div id="h7_2" class="hidden-content">$\tanh x = \frac{\sinh x}{\cosh x} = \frac{e^x - e^{-x}}{e^x + e^{-x}}$. Since $e^x + e^{-x} > 0$ for all real $x$, the denominator is never zero. Domain: $\mathbb{R}$ or $(-\infty, \infty)$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 7.3</span></div>
+            <p>Simplify \(h(x) = \sin(2\arccos x)\) using double-angle identities and state its exact domain \(D_h\) in interval notation.[cite: 1]</p>
+            <button class="toggle-btn" onclick="toggleContent('h7_3')">Solve / Hint</button>
+            <div id="h7_3" class="hidden-content">Using $\sin(2\theta) = 2\sin\theta\cos\theta$ where $\theta = \arccos x$. We know $\cos(\arccos x) = x$ and $\sin(\arccos x) = \sqrt{1-x^2}$. Therefore, $h(x) = 2x\sqrt{1-x^2}$. Domain of $\arccos x$ dictates the domain: $[-1, 1]$.[cite: 1]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 8: Separable Differential Equations
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 8.1</span></div>
+            <p>Solve the separable first-order differential equation:[cite: 1]</p>
+            <div class="math-block">\[\frac{dy}{dx} = \frac{x^3}{e^y}\]</div>
+            <span class="note-tag">Recycled by NotebookLM from the previous batch[cite: 1]</span>
+            <button class="toggle-btn" onclick="toggleContent('h8_1')">Solve / Hint</button>
+            <div id="h8_1" class="hidden-content">Separate variables: $e^y \, dy = x^3 \, dx$. Integrate both sides: $e^y = \frac{x^4}{4} + C \implies y = \ln\left(\frac{x^4}{4} + C\right)$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 8.2</span></div>
+            <p>Find the particular solution to the differential equation satisfying the initial condition \(u(0) = -5\):[cite: 1]</p>
+            <div class="math-block">\[\frac{du}{dt} = \frac{2t + \sec^2 t}{2u}\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h8_2')">Solve / Hint</button>
+            <div id="h8_2" class="hidden-content">Separate: $2u \, du = (2t + \sec^2 t) \, dt$. Integrate: $u^2 = t^2 + \tan t + C$. Apply $u(0)=-5 \implies (-5)^2 = 0 + 0 + C \implies C=25$. Solve for $u$: $u(t) = -\sqrt{t^2 + \tan t + 25}$ (we take the negative root because of the initial condition).[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 8.3</span></div>
+            <p>Find the particular solution satisfying \(y(1) = 1\):[cite: 1]</p>
+            <div class="math-block">\[x \ln x = y \left(1 + \sqrt{3 + y^2}\right) \frac{dy}{dx}\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h8_3')">Solve / Hint</button>
+            <div id="h8_3" class="hidden-content">Separate: $\frac{1}{x \ln x} \, dx = \frac{1}{y(1+\sqrt{3+y^2})} \, dy$. This formulation actually implies rearranging the other way if it's meant to be solvable standardly: $y(1+\sqrt{3+y^2})dy = x\ln x dx$. Integrate LHS directly. RHS requires Integration by Parts.[cite: 1]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 9: Linear Systems and Augmented/Extended Matrices
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 9.1</span></div>
+            <p>Consider the linear system represented by the augmented matrix:[cite: 1]</p>
+            <div class="math-block">\[\left[\begin{array}{ccc|c} 1 & -2 & 3 & 1 \\ 0 & k & 2 & 4 \\ 0 & 0 & k^2 - 4 & k - 2 \end{array}\right]\]</div>
+            <p>Determine all values of the parameter \(k\) for which the system has: (a) No solution, (b) A unique solution, (c) Infinitely many solutions.[cite: 1]</p>
+            <button class="toggle-btn" onclick="toggleContent('h9_1')">Solve / Hint</button>
+            <div id="h9_1" class="hidden-content">Look at the bottom row: $0x + 0y + (k^2-4)z = k-2$. <br>(a) No solution: $k^2-4 = 0$ AND $k-2 \neq 0 \implies (k-2)(k+2)=0$. If $k=-2$, we get $0 = -4$ (Inconsistent).<br>(c) Infinitely many: $k^2-4=0$ AND $k-2=0 \implies k=2$. Row becomes $0=0$.<br>(b) Unique: $k \neq -2$ and $k \neq 2$ (AND $k \neq 0$ for the second row pivot).[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 9.2</span></div>
+            <p>Identify the pivot variables and free variables, and write down the complete parametric solution set \([x, y, z]^T\) for the reduced row echelon system:[cite: 1]</p>
+            <div class="math-block">\[\left[\begin{array}{ccc|c} 1 & 0 & -3 & 5 \\ 0 & 1 & 2 & -1 \\ 0 & 0 & 0 & 0 \end{array}\right]\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h9_2')">Solve / Hint</button>
+            <div id="h9_2" class="hidden-content">Pivots are $x$ and $y$. Free variable is $z$. Let $z = t$. From row 2: $y + 2t = -1 \implies y = -1 - 2t$. From row 1: $x - 3t = 5 \implies x = 5 + 3t$. Vector form: $[5, -1, 0]^T + t[3, -2, 1]^T$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 9.3</span></div>
+            <p>Use elementary row operations on an augmented matrix to find the complete solution set or show that the system is inconsistent:[cite: 1]</p>
+            <div class="math-block">\begin{aligned} x + y - z &= 2 \\ 2x - y + 3z &= 9 \\ x - 2y + 4z &= 7 \end{aligned}</div>
+            <button class="toggle-btn" onclick="toggleContent('h9_3')">Solve / Hint</button>
+            <div id="h9_3" class="hidden-content">Create matrix and reduce: $R_2 \to R_2 - 2R_1$, $R_3 \to R_3 - R_1$. You will find the bottom row zeros out, leaving a free variable. Solve parametrically.[cite: 1]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-a">Section A</span>
+            Question 10: Rational Integration and Changes of Variable
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 10.1</span></div>
+            <p>Find the polynomial \(Q(x)\) in the following partial fraction decomposition:[cite: 1]</p>
+            <div class="math-block">\[\frac{3x^2 + 5x + 4}{(x+1)^3} = \frac{P(x)}{x+1} + \frac{Q(x)}{(x+1)^2} + \frac{R(x)}{(x+1)^3}\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h10_1')">Solve / Hint</button>
+            <div id="h10_1" class="hidden-content">Multiply by $(x+1)^3$: $3x^2 + 5x + 4 = A(x+1)^2 + B(x+1) + C$. Let $x=-1 \implies C = 3(-1)^2 - 5 + 4 = 2$. Expand RHS: $Ax^2 + (2A+B)x + (A+B+C)$. Compare coefficients: $A=3$. $2(3)+B = 5 \implies B=-1$. So $Q(x) = -1$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 10.2</span></div>
+            <p>Evaluate the indefinite integral using partial fraction decomposition:[cite: 1]</p>
+            <div class="math-block">\[\int \frac{5x + 1}{(2x + 1)(x - 1)} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('h10_2')">Solve / Hint</button>
+            <div id="h10_2" class="hidden-content">Decompose: $\frac{A}{2x+1} + \frac{B}{x-1}$. $A(x-1) + B(2x+1) = 5x+1$. If $x=1$, $3B=6 \implies B=2$. If $x=-1/2$, $-1.5A = -1.5 \implies A=1$. Integral is $\int \frac{1}{2x+1} dx + \int \frac{2}{x-1} dx = \frac{1}{2}\ln|2x+1| + 2\ln|x-1| + C$.[cite: 1]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 10.3</span></div>
+            <p>Use polynomial long division followed by partial fraction decomposition to evaluate the definite integral:[cite: 1]</p>
+            <div class="math-block">\[\int_{-1}^0 \frac{x^3 - 4x + 1}{x^2 - 3x + 2} \, dx\]</div>
+            <span class="note-tag">Warning: A problem this long is unlikely for a 2-mark multiple-choice question.[cite: 1]</span>
+            <button class="toggle-btn" onclick="toggleContent('h10_3')">Solve / Hint</button>
+            <div id="h10_3" class="hidden-content">Long division gives $(x+3) + \frac{3x-5}{(x-1)(x-2)}$. Decompose the remainder: $\frac{A}{x-1} + \frac{B}{x-2} \implies A=2, B=1$. Integrate: $[\frac{x^2}{2} + 3x + 2\ln|x-1| + \ln|x-2|]_{-1}^0$. Result is $\frac{5}{2} + \ln(2) - 2\ln(2) - \ln(3) = \frac{5}{2} - \ln(2) - \ln(3)$.[cite: 1]</div>
+        </div>
+    </div>
+
+    <!-- SECTION B -->
+    <div class="alert-box">
+        <strong>Exam Rule Reminder:</strong> For Section B, write only the final answer in the box provided. Rough work will not be marked. No method marks are awarded.[cite: 3]
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-b">Section B</span>
+            Question 1: Solving Systems of Linear Equations
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.1</span></div>
+            <p>Determine all values of the parameter \(k\) for which the system is inconsistent (has no solution).[cite: 3]</p>
+            <div class="math-block">\[\left[\begin{array}{ccc|c} 1 & -2 & 3 & 1 \\ 0 & k & 2 & 4 \\ 0 & 0 & k^2 - 4 & k - 2 \end{array}\right]\]</div>
+            <span class="note-tag">Warning: Duplicate from Section A[cite: 3]</span>
+            <div class="answer-box box-sm">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s1_1')">Show Solution</button>
+            <div id="s1_1" class="hidden-content">$k = -2$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.2</span></div>
+            <p>Identify the pivot variables and free variables, and write down the complete solution set in parametric vector form \([x, y, z]^T\):[cite: 3]</p>
+            <div class="math-block">\[\left[\begin{array}{ccc|c} 1 & 0 & -3 & 5 \\ 0 & 1 & 2 & -1 \\ 0 & 0 & 0 & 0 \end{array}\right]\]</div>
+            <span class="note-tag">Warning: Duplicate from Section A[cite: 3]</span>
+            <div class="answer-box box-md">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s1_2')">Show Solution</button>
+            <div id="s1_2" class="hidden-content">Pivots: $x, y$. Free: $z$.<br>$\begin{bmatrix} x \\ y \\ z \end{bmatrix} = \begin{bmatrix} 5 \\ -1 \\ 0 \end{bmatrix} + t \begin{bmatrix} 3 \\ -2 \\ 1 \end{bmatrix}, \quad t \in \mathbb{R}$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.3</span></div>
+            <p>Find the complete solution set \((x, y, z)\) or state if the system is inconsistent:[cite: 3]</p>
+            <div class="math-block">\begin{aligned} x + y - z &= 2 \\ 2x - y + 3z &= 9 \\ x - 2y + 4z &= 7 \end{aligned}</div>
+            <span class="note-tag">Warning: Duplicate from Section A[cite: 3]</span>
+            <div class="answer-box box-md">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s1_3')">Show Solution</button>
+            <div id="s1_3" class="hidden-content">$(x,y,z) = \left(\frac{11}{3} - \frac{2}{3}t, \, -\frac{5}{3} + \frac{5}{3}t, \, t\right), \quad t \in \mathbb{R}$[cite: 3]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-b">Section B</span>
+            Question 2: First-Order Linear Differential Equations
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.1</span></div>
+            <p>Consider the linear differential equation \(2x y' + y = 3\sqrt{x}\) for \(x > 0\):[cite: 3]</p>
+            <p>(a) Write the equation in standard form.<br>(b) Determine the integrating factor \(I(x)\).[cite: 3]</p>
+            <span class="note-tag">Note: 2024 Section C question formatted for Section B final answers[cite: 3]</span>
+            <div class="answer-box box-md">(a) Standard Form &nbsp;&nbsp;|&nbsp;&nbsp; (b) I(x)</div>
+            <button class="toggle-btn" onclick="toggleContent('s2_1')">Show Solution</button>
+            <div id="s2_1" class="hidden-content">(a) $y' + \frac{1}{2x}y = \frac{3}{2\sqrt{x}}$ <br>(b) $I(x) = \sqrt{x}$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.2</span></div>
+            <p>Find the integrating factor \(I(t)\) and general solution \(r(t)\) for the differential equation:[cite: 3]</p>
+            <div class="math-block">\[t \ln t \frac{dr}{dt} + r = t e^t \quad (t > 1)\]</div>
+            <div class="answer-box box-md">Final Answer: r(t)</div>
+            <button class="toggle-btn" onclick="toggleContent('s2_2')">Show Solution</button>
+            <div id="s2_2" class="hidden-content">$I(t) = \ln t$. <br>$r(t) = \frac{e^t + C}{\ln t}$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.3</span></div>
+            <p>Solve the first-order linear initial-value problem and state the particular solution \(y(x)\):[cite: 3]</p>
+            <div class="math-block">\[(x^2 + 1)y' + 3x(y - 1) = 0, \quad y(0) = 2\]</div>
+            <div class="answer-box box-md">Final Answer: y(x)</div>
+            <button class="toggle-btn" onclick="toggleContent('s2_3')">Show Solution</button>
+            <div id="s2_3" class="hidden-content">$y(x) = 1 + \frac{1}{(x^2+1)^{3/2}}$[cite: 3]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-b">Section B</span>
+            Question 3: Integration and Limits
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.1 (Trig Integration)</span></div>
+            <p>Evaluate the indefinite integral:[cite: 3]</p>
+            <div class="math-block">\[\int \sin(7x) \cos(3x) \, dx\]</div>
+            <div class="answer-box box-md">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s3_1a')">Show Solution</button>
+            <div id="s3_1a" class="hidden-content">$-\frac{1}{20}\cos(10x) - \frac{1}{8}\cos(4x) + C$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.2 (Definite Integral)</span></div>
+            <p>Evaluate the definite integral:[cite: 3]</p>
+            <div class="math-block">\[\int_{0}^{1} \frac{1 + x}{1 + x^2} \, dx\]</div>
+            <div class="answer-box box-md">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s3_2b')">Show Solution</button>
+            <div id="s3_2b" class="hidden-content">$\frac{\pi}{4} + \frac{1}{2}\ln(2)$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.3 (Improper Integral)</span></div>
+            <p>Evaluate the improper integral, or state if it diverges:[cite: 3]</p>
+            <div class="math-block">\[\int_{0}^{2} \frac{1}{(x - 1)^2} \, dx\]</div>
+            <div class="answer-box box-sm">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s3_3b')">Show Solution</button>
+            <div id="s3_3b" class="hidden-content">Diverges. (Crosses vertical asymptote at $x=1$)[cite: 3]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-b">Section B</span>
+            Question 4: Vector Geometry
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.1</span></div>
+            <p>Determine all values of the parameter \(k\) such that the vectors \(\mathbf{u} = [1, -1, 2]\) and \(\mathbf{v} = [k^2, k, -3]\) are orthogonal.[cite: 3]</p>
+            <span class="note-tag">Warning: Duplicate from Section A[cite: 3]</span>
+            <div class="answer-box box-sm">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s4_1')">Show Solution</button>
+            <div id="s4_1" class="hidden-content">$k = 3 \text{ or } k = -2$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.2</span></div>
+            <p>Calculate the acute angle \(\theta\) between the planes \(x + y + z = 0\) and \(2x + y - 2z = 0\).[cite: 3]</p>
+            <div class="answer-box box-sm">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s4_2')">Show Solution</button>
+            <div id="s4_2" class="hidden-content">$\theta = \arccos\left(\frac{1}{3\sqrt{3}}\right)$[cite: 3]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.3</span></div>
+            <p>Find the vector projection of \(\mathbf{v} = [1, 0, -2]^T\) onto the plane \(3x - y + z = 0\).[cite: 3]</p>
+            <div class="answer-box box-sm">Final Answer</div>
+            <button class="toggle-btn" onclick="toggleContent('s4_3')">Show Solution</button>
+            <div id="s4_3" class="hidden-content">$\left[\frac{14}{11}, -\frac{1}{11}, -\frac{21}{11}\right]^T$[cite: 3]</div>
+        </div>
+    </div>
+
+    <!-- SECTION C -->
+    <div class="instruction-box">
+        <strong>Section C Strategy:</strong> Write your answers on the paper showing all working. You are marked on your reasoning, ability to justify conclusions, and clear notation, not just the final result.[cite: 4]
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-c">Section C</span>
+            Question 1: Advanced Integration Techniques
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.1</span></div>
+            <p>Evaluate the indefinite integral using repeated integration by parts:[cite: 4]</p>
+            <div class="math-block">\[\int e^{-x} \cos(2x) \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c1_1')">Show Logic Guide</button>
+            <div id="c1_1" class="hidden-content"><strong>Approach:</strong> Let $u = \cos(2x)$ and $dv = e^{-x}dx$. Apply IBP twice. You will cycle back to the original integral. Move it to the left side of the equation and divide by the coefficient. <br>Result: $\frac{e^{-x}}{5} (2\sin(2x) - \cos(2x)) + C$.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.2</span></div>
+            <p>Evaluate the indefinite integral showing all intermediate reduction steps:[cite: 4]</p>
+            <div class="math-block">\[\int (\arcsin x)^2 \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c1_2')">Show Logic Guide</button>
+            <div id="c1_2" class="hidden-content"><strong>Approach:</strong> Let $u = (\arcsin x)^2$ and $dv = dx$. Apply IBP. The resulting integral is $\int \frac{2x \arcsin x}{\sqrt{1-x^2}} dx$. Apply IBP again letting $u = \arcsin x$ and $dv = \frac{2x}{\sqrt{1-x^2}}dx$. <br>Result: $x(\arcsin x)^2 + 2\sqrt{1-x^2} \arcsin x - 2x + C$.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 1.3</span></div>
+            <p>Evaluate the definite integral using integration by parts and a substitution:[cite: 4]</p>
+            <div class="math-block">\[\int_1^{\sqrt{3}} \arctan\left(\frac{1}{x}\right) \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c1_3')">Show Logic Guide</button>
+            <div id="c1_3" class="hidden-content"><strong>Approach:</strong> Let $u = \arctan(1/x)$ and $dv = dx$. Find $du = \frac{1}{1+(1/x)^2} \cdot (-x^{-2}) dx = \frac{-1}{x^2+1}dx$. The boundary evaluates to $x\arctan(1/x) |_1^{\sqrt{3}} + \int_1^{\sqrt{3}} \frac{x}{x^2+1}dx$. Use $w=x^2+1$ for the remaining integral.[cite: 4]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-c">Section C</span>
+            Question 2: Fundamental Derivations
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.1</span></div>
+            <p>Prove the derivative identity from scratch using implicit differentiation and right-triangle geometric bounds:[cite: 4]</p>
+            <div class="math-block">\[\frac{d}{dx}(\sec^{-1} x) = \frac{1}{x \sqrt{x^2 - 1}}\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c2_1')">Show Logic Guide</button>
+            <div id="c2_1" class="hidden-content"><strong>Approach:</strong> Let $y = \sec^{-1} x$, so $\sec y = x$. Differentiate implicitly: $\sec y \tan y \frac{dy}{dx} = 1 \implies \frac{dy}{dx} = \frac{1}{\sec y \tan y}$. We know $\sec y = x$. Use the identity $\tan^2 y = \sec^2 y - 1 = x^2 - 1$ to substitute $\tan y = \sqrt{x^2-1}$.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.2</span></div>
+            <p>Let \(f(x) = 2 \arctan(\sqrt{x}) - \arcsin\left(\frac{x-1}{x+1}\right)\). Prove that \(f'(x) = 0\) for all \(x > 0\).[cite: 4]</p>
+            <button class="toggle-btn" onclick="toggleContent('c2_2')">Show Logic Guide</button>
+            <div id="c2_2" class="hidden-content"><strong>Approach:</strong> Apply chain rule carefully to both terms. The derivative of the arcsin term will require quotient rule inside the square root simplification. Both derivatives simplify to exactly $\frac{1}{x+1}$, meaning they subtract to $0$.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 2.3</span></div>
+            <p>Prove the hyperbolic compound angle identity from exponential definitions:[cite: 4]</p>
+            <div class="math-block">\[\sinh(x+y) = \sinh x \cosh y + \cosh x \sinh y\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c2_3')">Show Logic Guide</button>
+            <div id="c2_3" class="hidden-content"><strong>Approach:</strong> Expand the RHS using $\sinh x = \frac{e^x - e^{-x}}{2}$ and $\cosh x = \frac{e^x + e^{-x}}{2}$. Multiply the fractions out algebraically. Four terms will cancel, leaving $\frac{e^{x+y} - e^{-(x+y)}}{2}$, which is the definition of the LHS.[cite: 4]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-c">Section C</span>
+            Question 3: Improper Integrals
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.1</span></div>
+            <p>Determine whether the improper integral converges or diverges by evaluating the limit of a definite integral:[cite: 4]</p>
+            <div class="math-block">\[\int_1^\infty x e^{-x^2} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c3_1')">Show Logic Guide</button>
+            <div id="c3_1" class="hidden-content"><strong>Approach:</strong> Set up $\lim_{t \to \infty} \int_1^t x e^{-x^2} dx$. Use $u = -x^2$. The antiderivative is $-\frac{1}{2}e^{-x^2}$. Evaluating the limit as $t \to \infty$ gives $-\frac{1}{2}(0 - e^{-1}) = \frac{1}{2e}$. It converges.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.2</span></div>
+            <p>Evaluate the improper integral with an infinite upper limit, or state with full limit justification why it diverges:[cite: 4]</p>
+            <div class="math-block">\[\int_1^\infty \frac{\ln x}{x} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c3_2')">Show Logic Guide</button>
+            <div id="c3_2" class="hidden-content"><strong>Approach:</strong> Let $u = \ln x$. The integral evaluates to $\lim_{t \to \infty} [\frac{1}{2}(\ln x)^2]_1^t$. Because $\ln(t) \to \infty$, the integral diverges.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 3.3</span></div>
+            <p>Locate the vertical asymptote, rewrite the integral as a limit, and evaluate or state divergence:[cite: 4]</p>
+            <div class="math-block">\[\int_0^1 \frac{\sec^2 x}{x\sqrt{x}} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c3_3')">Show Logic Guide</button>
+            <div id="c3_3" class="hidden-content"><strong>Approach:</strong> The discontinuity is at $x=0$. Since $\sec^2 x \ge 1$ on $[0,1]$, we can compare it to $\frac{1}{x^{1.5}}$. By p-test ($p = 1.5 > 1$), $\int_0^1 \frac{1}{x^{1.5}} dx$ diverges. Therefore, the original integral diverges by comparison.[cite: 4]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-c">Section C</span>
+            Question 4: Comparison Test
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.1</span></div>
+            <p>State an upper-bounding comparison function \(g(x)\) and write a complete step-by-step proof showing that the improper integral converges:[cite: 4]</p>
+            <div class="math-block">\[\int_1^\infty \frac{x \sin x}{x^3 + 1} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c4_1')">Show Logic Guide</button>
+            <div id="c4_1" class="hidden-content"><strong>Approach:</strong> Because $\sin x$ changes sign, take the absolute value to prove absolute convergence. $\left| \frac{x \sin x}{x^3 + 1} \right| \le \frac{x(1)}{x^3+1} < \frac{x}{x^3} = \frac{1}{x^2}$. Since $\int_1^\infty \frac{1}{x^2}dx$ converges ($p=2>1$), the integral converges absolutely, hence converges.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.2</span></div>
+            <p>Use the Comparison Test to prove whether the improper integral converges or diverges:[cite: 4]</p>
+            <div class="math-block">\[\int_0^\infty \frac{\arctan x}{2 + e^x} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c4_2')">Show Logic Guide</button>
+            <div id="c4_2" class="hidden-content"><strong>Approach:</strong> We know $\arctan x < \frac{\pi}{2}$ for $x > 0$, and $2+e^x > e^x$. So, $0 \le \frac{\arctan x}{2+e^x} < \frac{\pi/2}{e^x}$. The integral of $e^{-x}$ converges, so this converges by the Comparison Test.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 4.3</span></div>
+            <p>Set up a lower-bounding inequality for \(x \ge 2\) and use the Comparison Test to establish whether the integral converges or diverges:[cite: 4]</p>
+            <div class="math-block">\[\int_1^\infty \frac{x+1}{\sqrt{x^4 - x}} \, dx\]</div>
+            <button class="toggle-btn" onclick="toggleContent('c4_3')">Show Logic Guide</button>
+            <div id="c4_3" class="hidden-content"><strong>Approach:</strong> For large $x$, this behaves like $x/x^2 = 1/x$. Create a lower bound: $\frac{x+1}{\sqrt{x^4-x}} > \frac{x}{\sqrt{x^4}} = \frac{1}{x}$. Since $\int_1^\infty \frac{1}{x} dx$ diverges, our integral diverges by comparison.[cite: 4]</div>
+        </div>
+    </div>
+
+    <div class="section-group">
+        <div class="section-title">
+            <span class="section-badge badge-c">Section C</span>
+            Question 5: Vector Proofs
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.1</span></div>
+            <p>Let \(\mathbf{u}\) be a non-zero vector and \(\mathbf{v}\) be arbitrary. Prove that the projection \(\text{proj}_{\mathbf{u}}(\mathbf{v})\) and the component \(\mathbf{v} - \text{proj}_{\mathbf{u}}(\mathbf{v})\) are orthogonal.[cite: 4]</p>
+            <button class="toggle-btn" onclick="toggleContent('c5_1')">Show Logic Guide</button>
+            <div id="c5_1" class="hidden-content"><strong>Approach:</strong> Let $\mathbf{p} = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|^2}\mathbf{u}$. You must show $\mathbf{p} \cdot (\mathbf{v} - \mathbf{p}) = 0$. Expand: $\mathbf{p} \cdot \mathbf{v} - \mathbf{p} \cdot \mathbf{p}$. Substitute the formula for $\mathbf{p}$ and use dot product properties to show both terms equal $\frac{(\mathbf{u} \cdot \mathbf{v})^2}{\|\mathbf{u}\|^2}$, resulting in 0.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.2</span></div>
+            <p>Use the result from Problem 5.1 and the Pythagorean theorem to prove that \(|\text{proj}_{\mathbf{u}}(\mathbf{v})| \le |\mathbf{v}|\).[cite: 4]</p>
+            <button class="toggle-btn" onclick="toggleContent('c5_2')">Show Logic Guide</button>
+            <div id="c5_2" class="hidden-content"><strong>Approach:</strong> Write $\mathbf{v} = \mathbf{p} + (\mathbf{v}-\mathbf{p})$. Since they are orthogonal, $\|\mathbf{v}\|^2 = \|\mathbf{p}\|^2 + \|\mathbf{v}-\mathbf{p}\|^2$. Because squared magnitudes are $\ge 0$, it follows that $\|\mathbf{v}\|^2 \ge \|\mathbf{p}\|^2$. Taking the square root gives the result.[cite: 4]</div>
+        </div>
+        <div class="card">
+            <div class="problem-meta"><span class="problem-id">Problem 5.3</span></div>
+            <p>Using the vector projection inequality and the explicit formula for projection, prove the Cauchy-Schwarz Inequality: \(|\mathbf{u} \cdot \mathbf{v}| \le |\mathbf{u}| |\mathbf{v}|\).[cite: 4]</p>
+            <button class="toggle-btn" onclick="toggleContent('c5_3')">Show Logic Guide</button>
+            <div id="c5_3" class="hidden-content"><strong>Approach:</strong> Substitute the magnitude of the projection formula into the inequality from 5.2. $\left| \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|^2}\mathbf{u} \right| \le \|\mathbf{v}\|$. Pull out the scalar absolute value: $\frac{|\mathbf{u} \cdot \mathbf{v}|}{\|\mathbf{u}\|^2} \|\mathbf{u}\| \le \|\mathbf{v}\|$. Multiply both sides by $\|\mathbf{u}\|$ to complete the proof.[cite: 4]</div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
