@@ -180,29 +180,29 @@
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 1.1</span></div>
-            <p>A bacteria culture grows with a constant relative growth rate. The bacteria count was 400 after 2 hours and 25,600 after 6 hours.[cite: 2]</p>
+            <p>A bacteria culture grows with a constant relative growth rate. The bacteria count was 400 after 2 hours and 25,600 after 6 hours.</p>
             <ul class="sub-questions">
-                <li>(a) What was the initial size of the culture?[cite: 2]</li>
-                <li>(b) Find an expression for the number of bacteria after \(t\) hours.[cite: 2]</li>
-                <li>(c) When will the population reach 50,000?[cite: 2]</li>
+                <li>(a) What was the initial size of the culture?</li>
+                <li>(b) Find an expression for the number of bacteria after \(t\) hours.</li>
+                <li>(c) When will the population reach 50,000?</li>
             </ul>
             <button class="toggle-btn" onclick="toggleContent('h1_1')">Show Guide / Hint</button>
-            <div id="h1_1" class="hidden-content">Use $P(t) = P_0 e^{kt}$. From $t=2$ to $t=6$ is $\Delta t = 4$ hours. The factor increase is $\frac{25600}{400} = 64$. Thus $e^{4k} = 64 = 8^2 \implies e^{2k} = 8$. Then $P_0 = \frac{400}{e^{2k}} = \frac{400}{8} = 50$.[cite: 2]</div>
+            <div id="h1_1" class="hidden-content">Use $P(t) = P_0 e^{kt}$. From $t=2$ to $t=6$ is $\Delta t = 4$ hours. The factor increase is $\frac{25600}{400} = 64$. Thus $e^{4k} = 64 = 8^2 \implies e^{2k} = 8$. Then $P_0 = \frac{400}{e^{2k}} = \frac{400}{8} = 50$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 1.2</span></div>
-            <p>Evaluate the indefinite integral using exponential laws and substitution:[cite: 2]</p>
+            <p>Evaluate the indefinite integral using exponential laws and substitution:</p>
             <div class="math-block">\[\int e^{e^u + u} \, du\]</div>
             <button class="toggle-btn" onclick="toggleContent('h1_2')">Show Guide / Hint</button>
-            <div id="h1_2" class="hidden-content">Rewrite $e^{e^u + u}$ as $e^{e^u} \cdot e^u$. Substitute $w = e^u$, which gives $dw = e^u du$. The integral becomes $\int e^w dw = e^w + C = e^{e^u} + C$.[cite: 2]</div>
+            <div id="h1_2" class="hidden-content">Rewrite $e^{e^u + u}$ as $e^{e^u} \cdot e^u$. Substitute $w = e^u$, which gives $dw = e^u du$. The integral becomes $\int e^w dw = e^w + C = e^{e^u} + C$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 1.3</span></div>
-            <p>Solve the differential equation involving separable exponential variables:[cite: 2]</p>
+            <p>Solve the differential equation involving separable exponential variables:</p>
             <div class="math-block">\[\frac{dy}{dx} = \frac{x^3}{e^y}\]</div>
-            <span class="note-tag">Note: This aligns with Question 8 on your 2026 exam breakdown[cite: 2]</span>
+            <span class="note-tag">Note: This aligns with Question 8 on your 2026 exam breakdown</span>
             <button class="toggle-btn" onclick="toggleContent('h1_3')">Show Guide / Hint</button>
-            <div id="h1_3" class="hidden-content">Separate variables: $e^y dy = x^3 dx$. Integrate both sides: $e^y = \frac{x^4}{4} + C \implies y = \ln\left(\frac{x^4}{4} + C\right)$.[cite: 2]</div>
+            <div id="h1_3" class="hidden-content">Separate variables: $e^y dy = x^3 dx$. Integrate both sides: $e^y = \frac{x^4}{4} + C \implies y = \ln\left(\frac{x^4}{4} + C\right)$.</div>
         </div>
     </div>
 
@@ -213,22 +213,22 @@
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 2.1</span></div>
-            <p>Evaluate the exact value without a calculator:[cite: 2]</p>
+            <p>Evaluate the exact value without a calculator:</p>
             <div class="math-block">\[\sinh(3 \ln 2)\]</div>
             <button class="toggle-btn" onclick="toggleContent('h2_1')">Show Guide / Hint</button>
-            <div id="h2_1" class="hidden-content">Use definition $\sinh(x) = \frac{e^x - e^{-x}}{2}$. Here $e^{3\ln 2} = e^{\ln(2^3)} = 8$, and $e^{-3\ln 2} = \frac{1}{8}$. So $\sinh(3\ln 2) = \frac{8 - 1/8}{2} = \frac{63}{16}$.[cite: 2]</div>
+            <div id="h2_1" class="hidden-content">Use definition $\sinh(x) = \frac{e^x - e^{-x}}{2}$. Here $e^{3\ln 2} = e^{\ln(2^3)} = 8$, and $e^{-3\ln 2} = \frac{1}{8}$. So $\sinh(3\ln 2) = \frac{8 - 1/8}{2} = \frac{63}{16}$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 2.2</span></div>
-            <p>Let \(f(x) = \tanh(\ln x)\) for \(x > 0\). Calculate the derivative \(f'(x)\) and simplify your answer.[cite: 2]</p>
+            <p>Let \(f(x) = \tanh(\ln x)\) for \(x > 0\). Calculate the derivative \(f'(x)\) and simplify your answer.</p>
             <button class="toggle-btn" onclick="toggleContent('h2_2')">Show Guide / Hint</button>
-            <div id="h2_2" class="hidden-content">Chain Rule: $f'(x) = \text{sech}^2(\ln x) \cdot \frac{1}{x}$. You can also write $\tanh(\ln x) = \frac{x - x^{-1}}{x + x^{-1}} = \frac{x^2 - 1}{x^2 + 1}$ and differentiate directly to get $\frac{4x}{(x^2 + 1)^2}$.[cite: 2]</div>
+            <div id="h2_2" class="hidden-content">Chain Rule: $f'(x) = \text{sech}^2(\ln x) \cdot \frac{1}{x}$. You can also write $\tanh(\ln x) = \frac{x - x^{-1}}{x + x^{-1}} = \frac{x^2 - 1}{x^2 + 1}$ and differentiate directly to get $\frac{4x}{(x^2 + 1)^2}$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 2.3</span></div>
-            <p>Given that \(\tanh x = \frac{12}{13}\), determine the exact values of \(\sinh x\) and \(\cosh x\).[cite: 2]</p>
+            <p>Given that \(\tanh x = \frac{12}{13}\), determine the exact values of \(\sinh x\) and \(\cosh x\).</p>
             <button class="toggle-btn" onclick="toggleContent('h2_3')">Show Guide / Hint</button>
-            <div id="h2_3" class="hidden-content">Identity: $1 - \tanh^2 x = \text{sech}^2 x$. So $\text{sech}^2 x = 1 - \frac{144}{169} = \frac{25}{169} \implies \cosh x = \frac{13}{5}$ (since $\cosh x > 0$). Then $\sinh x = \cosh x \cdot \tanh x = \frac{13}{5} \cdot \frac{12}{13} = \frac{12}{5}$.[cite: 2]</div>
+            <div id="h2_3" class="hidden-content">Identity: $1 - \tanh^2 x = \text{sech}^2 x$. So $\text{sech}^2 x = 1 - \frac{144}{169} = \frac{25}{169} \implies \cosh x = \frac{13}{5}$ (since $\cosh x > 0$). Then $\sinh x = \cosh x \cdot \tanh x = \frac{13}{5} \cdot \frac{12}{13} = \frac{12}{5}$.</div>
         </div>
     </div>
 
@@ -239,21 +239,21 @@
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 3.1</span></div>
-            <p>Determine the vector form of the line passing through the point \(P = (2, 1, 1)\) that runs parallel to the \(x\)-axis.[cite: 2]</p>
+            <p>Determine the vector form of the line passing through the point \(P = (2, 1, 1)\) that runs parallel to the \(x\)-axis.</p>
             <button class="toggle-btn" onclick="toggleContent('h3_1')">Show Guide / Hint</button>
-            <div id="h3_1" class="hidden-content">Direction parallel to the x-axis is $\mathbf{d} = [1, 0, 0]$. Vector form: $\mathbf{r}(t) = [2, 1, 1] + t[1, 0, 0]$ for $t \in \mathbb{R}$.[cite: 2]</div>
+            <div id="h3_1" class="hidden-content">Direction parallel to the x-axis is $\mathbf{d} = [1, 0, 0]$. Vector form: $\mathbf{r}(t) = [2, 1, 1] + t[1, 0, 0]$ for $t \in \mathbb{R}$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 3.2</span></div>
-            <p>Determine the parametric form of the line passing through the origin perpendicular to the plane \(x - 3y + 3z = 4\).[cite: 2]</p>
+            <p>Determine the parametric form of the line passing through the origin perpendicular to the plane \(x - 3y + 3z = 4\).</p>
             <button class="toggle-btn" onclick="toggleContent('h3_2')">Show Guide / Hint</button>
-            <div id="h3_2" class="hidden-content">The normal vector of the plane is $\mathbf{n} = [1, -3, 3]$, which serves as the direction vector of the perpendicular line. Passing through $(0,0,0)$, the parametric equations are $x = t$, $y = -3t$, $z = 3t$.[cite: 2]</div>
+            <div id="h3_2" class="hidden-content">The normal vector of the plane is $\mathbf{n} = [1, -3, 3]$, which serves as the direction vector of the perpendicular line. Passing through $(0,0,0)$, the parametric equations are $x = t$, $y = -3t$, $z = 3t$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 3.3</span></div>
-            <p>Find all values of \(k\) such that the vectors \(\mathbf{u} = [1, -1, 2]\) and \(\mathbf{v} = [k^2, k, -3]\) are orthogonal.[cite: 2]</p>
+            <p>Find all values of \(k\) such that the vectors \(\mathbf{u} = [1, -1, 2]\) and \(\mathbf{v} = [k^2, k, -3]\) are orthogonal.</p>
             <button class="toggle-btn" onclick="toggleContent('h3_3')">Show Guide / Hint</button>
-            <div id="h3_3" class="hidden-content">Set dot product to zero: $\mathbf{u} \cdot \mathbf{v} = (1)(k^2) + (-1)(k) + (2)(-3) = k^2 - k - 6 = 0$. Factor: $(k - 3)(k + 2) = 0 \implies k = 3$ or $k = -2$.[cite: 2]</div>
+            <div id="h3_3" class="hidden-content">Set dot product to zero: $\mathbf{u} \cdot \mathbf{v} = (1)(k^2) + (-1)(k) + (2)(-3) = k^2 - k - 6 = 0$. Factor: $(k - 3)(k + 2) = 0 \implies k = 3$ or $k = -2$.</div>
         </div>
     </div>
 
@@ -264,28 +264,28 @@
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 4.1</span></div>
-            <p>Evaluate the indeterminate power limit (\(0^0\)) using logarithmic transformations and L'Hôpital's Rule:[cite: 2]</p>
+            <p>Evaluate the indeterminate power limit (\(0^0\)) using logarithmic transformations and L'Hôpital's Rule:</p>
             <div class="math-block">\[\lim_{x \to 0^+} x^{\sqrt{x}}\]</div>
             <button class="toggle-btn" onclick="toggleContent('h4_1')">Show Guide / Hint</button>
-            <div id="h4_1" class="hidden-content">Let $y = x^{\sqrt{x}}$, so $\ln y = \sqrt{x} \ln x = \frac{\ln x}{x^{-1/2}}$. Apply L'Hôpital: $\lim_{x \to 0^+} \frac{1/x}{-\frac{1}{2}x^{-3/2}} = \lim_{x \to 0^+} (-2\sqrt{x}) = 0$. Therefore, $\lim y = e^0 = 1$.[cite: 2]</div>
+            <div id="h4_1" class="hidden-content">Let $y = x^{\sqrt{x}}$, so $\ln y = \sqrt{x} \ln x = \frac{\ln x}{x^{-1/2}}$. Apply L'Hôpital: $\lim_{x \to 0^+} \frac{1/x}{-\frac{1}{2}x^{-3/2}} = \lim_{x \to 0^+} (-2\sqrt{x}) = 0$. Therefore, $\lim y = e^0 = 1$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 4.2</span></div>
-            <p>Evaluate the indeterminate difference limit (\(\infty - \infty\)):[cite: 2]</p>
+            <p>Evaluate the indeterminate difference limit (\(\infty - \infty\)):</p>
             <div class="math-block">\[\lim_{x \to 1} \left( \frac{x}{x-1} - \frac{1}{\ln x} \right)\]</div>
             <button class="toggle-btn" onclick="toggleContent('h4_2')">Show Guide / Hint</button>
-            <div id="h4_2" class="hidden-content">Combine denominators: $\frac{x \ln x - (x - 1)}{(x - 1)\ln x}$. Apply L'Hôpital twice to resolve the $\frac{0}{0}$ indeterminate form. The resulting limit evaluates to $\frac{1}{2}$.[cite: 2]</div>
+            <div id="h4_2" class="hidden-content">Combine denominators: $\frac{x \ln x - (x - 1)}{(x - 1)\ln x}$. Apply L'Hôpital twice to resolve the $\frac{0}{0}$ indeterminate form. The resulting limit evaluates to $\frac{1}{2}$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 4.3</span></div>
-            <p>Consider the limit \(\lim_{x \to \infty} \frac{2x + \sin x}{3x}\).[cite: 2]</p>
+            <p>Consider the limit \(\lim_{x \to \infty} \frac{2x + \sin x}{3x}\).</p>
             <ul class="sub-questions">
-                <li>(a) Explain why L'Hôpital's Rule cannot be applied.[cite: 2]</li>
-                <li>(b) Evaluate the true limit using the Squeeze Theorem.[cite: 2]</li>
+                <li>(a) Explain why L'Hôpital's Rule cannot be applied.</li>
+                <li>(b) Evaluate the true limit using the Squeeze Theorem.</li>
             </ul>
-            <span class="note-tag">Note: Proof/explanation format typical of Section C rather than Section A[cite: 2]</span>
+            <span class="note-tag">Note: Proof/explanation format typical of Section C rather than Section A</span>
             <button class="toggle-btn" onclick="toggleContent('h4_3')">Show Guide / Hint</button>
-            <div id="h4_3" class="hidden-content">(a) Differentiating top and bottom gives $\frac{2 + \cos x}{3}$. As $x \to \infty$, $\cos x$ oscillates continuously, meaning the derivative quotient limit does not exist. (b) Since $-1 \le \sin x \le 1$, we have $\frac{2x - 1}{3x} \le \frac{2x + \sin x}{3x} \le \frac{2x + 1}{3x}$. As $x \to \infty$, both bounds tend to $\frac{2}{3}$.[cite: 2]</div>
+            <div id="h4_3" class="hidden-content">(a) Differentiating top and bottom gives $\frac{2 + \cos x}{3}$. As $x \to \infty$, $\cos x$ oscillates continuously, meaning the derivative quotient limit does not exist. (b) Since $-1 \le \sin x \le 1$, we have $\frac{2x - 1}{3x} \le \frac{2x + \sin x}{3x} \le \frac{2x + 1}{3x}$. As $x \to \infty$, both bounds tend to $\frac{2}{3}$.</div>
         </div>
     </div>
 
@@ -296,23 +296,23 @@
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 5.1</span></div>
-            <p>Determine the vector form, parametric form, and normal form of the plane passing through \(P = (6, -4, -3)\) with direction vectors \(\mathbf{u} = [1, 0, 2]\) and \(\mathbf{v} = [-3, 2, 1]\).[cite: 2]</p>
-            <span class="note-tag">Vector u patched[cite: 2]</span>
+            <p>Determine the vector form, parametric form, and normal form of the plane passing through \(P = (6, -4, -3)\) with direction vectors \(\mathbf{u} = [1, 0, 2]\) and \(\mathbf{v} = [-3, 2, 1]\).</p>
+            <span class="note-tag">Vector u patched</span>
             <button class="toggle-btn" onclick="toggleContent('h5_1')">Show Guide / Hint</button>
-            <div id="h5_1" class="hidden-content">Normal vector is $\mathbf{n} = \mathbf{u} \times \mathbf{v} = [-4, -7, 2]$. Normal equation: $-4(x - 6) - 7(y + 4) + 2(z + 3) = 0 \implies -4x - 7y + 2z = -2$.[cite: 2]</div>
+            <div id="h5_1" class="hidden-content">Normal vector is $\mathbf{n} = \mathbf{u} \times \mathbf{v} = [-4, -7, 2]$. Normal equation: $-4(x - 6) - 7(y + 4) + 2(z + 3) = 0 \implies -4x - 7y + 2z = -2$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 5.2</span></div>
-            <p>Find the perpendicular distance between the point \(Q = (1, 2, 3)\) and the plane \(x - y + z = 0\), and determine the point on the plane closest to \(Q\).[cite: 2]</p>
+            <p>Find the perpendicular distance between the point \(Q = (1, 2, 3)\) and the plane \(x - y + z = 0\), and determine the point on the plane closest to \(Q\).</p>
             <button class="toggle-btn" onclick="toggleContent('h5_2')">Show Guide / Hint</button>
-            <div id="h5_2" class="hidden-content">Distance: $D = \frac{|1(1) - 1(2) + 1(3)|}{\sqrt{1^2 + (-1)^2 + 1^2}} = \frac{2}{\sqrt{3}}$. The closest point is found by moving from $Q$ along the unit normal: $Q - D \frac{\mathbf{n}}{\|\mathbf{n}\|} = (1, 2, 3) - \frac{2}{3}(1, -1, 1) = \left(\frac{1}{3}, \frac{8}{3}, \frac{7}{3}\right)$.[cite: 2]</div>
+            <div id="h5_2" class="hidden-content">Distance: $D = \frac{|1(1) - 1(2) + 1(3)|}{\sqrt{1^2 + (-1)^2 + 1^2}} = \frac{2}{\sqrt{3}}$. The closest point is found by moving from $Q$ along the unit normal: $Q - D \frac{\mathbf{n}}{\|\mathbf{n}\|} = (1, 2, 3) - \frac{2}{3}(1, -1, 1) = \left(\frac{1}{3}, \frac{8}{3}, \frac{7}{3}\right)$.</div>
         </div>
         <div class="card">
             <div class="problem-meta"><span class="problem-id">Problem 5.3</span></div>
-            <p>Calculate the vector projection \(\text{proj}_{\mathbf{u}}(\mathbf{v})\) where \(\mathbf{u} = [2, -1, 3]\) and \(\mathbf{v} = [1, 4, -2]\).[cite: 2]</p>
-            <span class="note-tag">Vectors u and v patched[cite: 2]</span>
+            <p>Calculate the vector projection \(\text{proj}_{\mathbf{u}}(\mathbf{v})\) where \(\mathbf{u} = [2, -1, 3]\) and \(\mathbf{v} = [1, 4, -2]\).</p>
+            <span class="note-tag">Vectors u and v patched</span>
             <button class="toggle-btn" onclick="toggleContent('h5_3')">Show Guide / Hint</button>
-            <div id="h5_3" class="hidden-content">Formula: $\text{proj}_{\mathbf{u}}(\mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|^2}\mathbf{u}$. Compute $\mathbf{u} \cdot \mathbf{v} = 2(1) + (-1)(4) + 3(-2) = -8$. Compute $\|\mathbf{u}\|^2 = 2^2 + (-1)^2 + 3^2 = 14$. Thus $\text{proj}_{\mathbf{u}}(\mathbf{v}) = -\frac{8}{14}[2, -1, 3] = -\frac{4}{7}[2, -1, 3]$.[cite: 2]</div>
+            <div id="h5_3" class="hidden-content">Formula: $\text{proj}_{\mathbf{u}}(\mathbf{v}) = \frac{\mathbf{u} \cdot \mathbf{v}}{\|\mathbf{u}\|^2}\mathbf{u}$. Compute $\mathbf{u} \cdot \mathbf{v} = 2(1) + (-1)(4) + 3(-2) = -8$. Compute $\|\mathbf{u}\|^2 = 2^2 + (-1)^2 + 3^2 = 14$. Thus $\text{proj}_{\mathbf{u}}(\mathbf{v}) = -\frac{8}{14}[2, -1, 3] = -\frac{4}{7}[2, -1, 3]$.</div>
         </div>
     </div>
 
